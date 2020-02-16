@@ -5,11 +5,11 @@ const PersonList =(props)=>{
 
     
         return(
-            <div className="container">
+            <div className="container text-center">
                 <p>{props.name}</p>
                 <p>Value : {props.value}</p>
-                <button >Add</button>
-                <button >Sub</button>
+                <button onClick={props.addHandler}>Add</button>
+                <button onClick={props.subHandler}>Sub</button>
             </div>
         )
 
