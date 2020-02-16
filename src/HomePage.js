@@ -10,16 +10,23 @@ class HomePage extends React.Component {
     // const dispatch = useDispatch();
 
     render(){
+      let text = '<Link to="/dollarjarpage"> <button className="btn btn-primary">Submit</button></Link>';
     return (
     <div className="container">
     <form>
           
           <input /*something action*/ onChange={(event)=>this.props.enterUserName(event)} placeholder="Enter Username"></input>
-         <Link to="/dollarjarpage"> <button className="btn btn-primary">Submit</button></Link>
+          <Link to="/dollarjarpage"> <button className="btn btn-primary">Submit</button></Link>
       </form>
       </div>
   );
     }
+}
+
+const mapStateToProps = (state)=>{
+  return{
+      tempUserName:state.uname
+  }
 }
 
 const mapDispatchToProps = (dispatch)=>{

@@ -11,7 +11,6 @@ import allReducer from './reducers/allReducer';
 
 const store = createStore(allReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-
 const routing = (
     <Router>
       <div>

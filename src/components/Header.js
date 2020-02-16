@@ -7,8 +7,8 @@ class Header extends React.Component{
         return(
             <div>
                 <p>Hii {this.props.loginname}</p>
-                <p>Penalty : {this.props.fine} {this.props.tempname}</p>
-                <input type="number" onChange = {(event)=>this.props.penaltyChange(event)}></input>
+                <p>Penalty : {this.props.fine}</p>
+                <input type="number" value={this.props.fine} onChange = {(event)=>this.props.penaltyChange(event)}></input>
                 <br></br>
                 <p>Total : {this.props.total}</p>
                 <input placeholder="Enter Name" value={this.props.tempname} onChange={(event)=>this.props.newname(event)}></input>
@@ -21,7 +21,7 @@ class Header extends React.Component{
 
 
 const mapStateToProps =(state) =>{
-    console.log(state.uname);
+    
     return{
         loginname: state.uname,
         fine: state.penalty,

@@ -25,7 +25,11 @@ const allReducer =(state=initialState, action)=>{
             console.log(action.payload);
             let temp2 = {...state};
             temp2.penalty = parseInt(action.payload);
-            return temp2;
+            
+            return {
+                ...temp2,
+                penalty:parseInt(action.payload)
+            };
 
         case 'NEW_NAME':
             console.log(action.payload);
@@ -36,7 +40,8 @@ const allReducer =(state=initialState, action)=>{
         case 'ADD_PERSON':
             let temp4 = {...state};
             let tempstring = temp4.tempname.trim();
-            let temparr = temp4.person;
+            // REMEMBER :::: NEVER TAKE REFERENCE OF STATE
+            let temparr = [...temp4.person];
             if(tempstring!=""){
                 let newperson = {
                     username:tempstring,
@@ -57,27 +62,25 @@ const allReducer =(state=initialState, action)=>{
         case 'ADD_PENALTY':
             let newObj = {...state}
             let updatedPersons = newObj.person;
-            console.log(updatedPersons)
             let i = 0;
             for (i = 0; i < updatedPersons.length; i++) {
                 if (updatedPersons[i].id == action.payload) {
-                    console.log("before "+i);
                     i = parseInt(updatedPersons[i].id);
-                    console.log(i);
                     break;
                 }
             }
             let temptotal = state.total;
             if(!isNaN(state.penalty)){
-            
             temptotal += parseInt(state.penalty);
             updatedPersons[i].value += parseInt(state.penalty);
-            console.log(updatedPersons[i]);
+            console.log(updatedPersons[i].value);
             }
             
+            let updateArray = [...updatedPersons];
+
             return {
                 ...state,
-                person: updatedPersons,
+                person: updateArray,
                 total:temptotal
             }
 
@@ -88,9 +91,7 @@ const allReducer =(state=initialState, action)=>{
             let j = 0;
             for (j = 0; j < updatedPersons1.length; j++) {
                 if (updatedPersons1[j].id == action.payload) {
-                    console.log("before "+j);
                     j = parseInt(updatedPersons1[j].id);
-                    console.log(j);
                     break;
                 }
             }
@@ -102,10 +103,12 @@ const allReducer =(state=initialState, action)=>{
             updatedPersons1[j].value -= parseInt(state.penalty);
             console.log(updatedPersons1[j]);
             }
+
+            let updateArray1 = [...updatedPersons1];
             
             return {
                 ...state,
-                person: updatedPersons1,
+                person: updateArray1,
                 total:temptotal1
             }
             
