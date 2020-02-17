@@ -4,9 +4,20 @@ import Header from './Header';
 import PersonList from './PersonList';
 
 class DollarJarPage extends React.Component{
+
+    constructor(props){
+        super(props);
+        if(performance.navigation.type===1){
+            this.props.history.push('/');
+        }
+    }
+
+    componentDidUpdate(){
+        console.log("updated list");
+    }
+
     render(){
-        console.log("props");
-        console.log(this.props);
+        
         return(
             <div className="container">
             

@@ -1,16 +1,15 @@
 import React from 'react';
 import './HomePage.css';
 import { Link } from 'react-router-dom';
-import usernameInput from './actions/usernameInput';
-import {useSelector, useDispatch, connect} from 'react-redux';
+import {connect} from 'react-redux';
 
 
 class HomePage extends React.Component {
 
-    // const dispatch = useDispatch();
-
+    
     render(){
-      let text = '<Link to="/dollarjarpage"> <button className="btn btn-primary">Submit</button></Link>';
+
+     console.log(this.props.tempUserName);
     return (
     <div className="container">
     <form>
@@ -20,7 +19,7 @@ class HomePage extends React.Component {
       </form>
       </div>
   );
-    }
+  }
 }
 
 const mapStateToProps = (state)=>{
@@ -38,4 +37,4 @@ const mapDispatchToProps = (dispatch)=>{
   }
 }
 
-export default connect(null,mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps,mapDispatchToProps)(HomePage);

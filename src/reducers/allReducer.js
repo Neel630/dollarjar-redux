@@ -1,7 +1,5 @@
-import { act } from "react-dom/test-utils";
-
 let initialState = {
-    uname:null,
+    uname:"",
     tempname:"",
     person:[
         {username:"Neel",value:0,id:0},
@@ -13,16 +11,16 @@ let initialState = {
 }
 
 
-const allReducer =(state=initialState, action)=>{
+const allReducer = (state = initialState, action)=>{
     switch(action.type){
         case 'DETECT_USERNAME':
-            console.log(action.payload);
-            let temp ={...state};
-            temp.uname = action.payload;
-            return temp;
+            return {
+                ...state,
+                uname:action.payload
+            };
 
         case 'PENALTY_CHANGE':
-            console.log(action.payload);
+           
             let temp2 = {...state};
             temp2.penalty = parseInt(action.payload);
             
@@ -32,12 +30,13 @@ const allReducer =(state=initialState, action)=>{
             };
 
         case 'NEW_NAME':
-            console.log(action.payload);
+            
             let temp3 ={...state};
             temp3.tempname = action.payload;
             return temp3;
 
         case 'ADD_PERSON':
+            action.payload.preventDefault();
             let temp4 = {...state};
             let tempstring = temp4.tempname.trim();
             // REMEMBER :::: NEVER TAKE REFERENCE OF STATE
@@ -73,7 +72,7 @@ const allReducer =(state=initialState, action)=>{
             if(!isNaN(state.penalty)){
             temptotal += parseInt(state.penalty);
             updatedPersons[i].value += parseInt(state.penalty);
-            console.log(updatedPersons[i].value);
+            
             }
             
             let updateArray = [...updatedPersons];
@@ -87,7 +86,7 @@ const allReducer =(state=initialState, action)=>{
         case 'SUB_PENALTY':
             let newObj1 = {...state}
             let updatedPersons1 = newObj1.person;
-            console.log(updatedPersons1)
+          
             let j = 0;
             for (j = 0; j < updatedPersons1.length; j++) {
                 if (updatedPersons1[j].id == action.payload) {
@@ -101,7 +100,7 @@ const allReducer =(state=initialState, action)=>{
             
             temptotal1 -= parseInt(state.penalty);
             updatedPersons1[j].value -= parseInt(state.penalty);
-            console.log(updatedPersons1[j]);
+            
             }
 
             let updateArray1 = [...updatedPersons1];
@@ -111,6 +110,8 @@ const allReducer =(state=initialState, action)=>{
                 person: updateArray1,
                 total:temptotal1
             }
+        default:
+            return state
             
     }
 }
