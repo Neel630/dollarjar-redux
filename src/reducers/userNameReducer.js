@@ -2,7 +2,7 @@ let initialState = {
     userName:"",
 }
 
-const allReducer = (state = initialState, action)=>{
+const userNameReducer = (state = initialState, action)=>{
     switch(action.type){
         case 'DETECT_USERNAME':
             return {
@@ -16,4 +16,4 @@ const allReducer = (state = initialState, action)=>{
     }
 }
 
-export default allReducer;
+export default userNameReducer;
