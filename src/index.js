@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import HomePage from './HomePage';
-import DollarJarPage from './components/DollarJarPage';
 import * as serviceWorker from './serviceWorker';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import allReducer from './reducers/allReducer';

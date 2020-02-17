@@ -1,20 +1,17 @@
 import React from 'react';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
-import HomePage from './HomePage';
-import DollarJarPage from './components/DollarJarPage';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import Home from './Home';
+import DollarJar from './components/DollarJar';
 
 function App() {
-    return(
+  return(
     <div>
-    <Router>
-      <div>
-      
-            <Route exact path="/" component={HomePage}/>
-               
-            <Route path="/dollarjarpage" component={DollarJarPage} />     
-        
-      </div>
-    </Router>
+      <Router>
+          <div>
+            <Route exact path="/" component={Home}/>
+            <Route path="/dollarjar" component={DollarJar} />     
+          </div>
+      </Router>
     </div>
   )
 }
