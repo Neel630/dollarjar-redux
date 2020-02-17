@@ -9,13 +9,17 @@ class HomePage extends React.Component {
     
     render(){
 
+      let checkUserName = this.props.tempUserName.trim();
+      let displayButton = (<Link to="/dollarjarpage"> <button className="btn btn-primary">Submit</button></Link>);
+
      console.log(this.props.tempUserName);
     return (
     <div className="container">
     <form>
           
-          <input /*something action*/ onChange={(event)=>this.props.enterUserName(event)} placeholder="Enter Username"></input>
-          <Link to="/dollarjarpage"> <button className="btn btn-primary">Submit</button></Link>
+          <input /*some action*/ onChange={(event)=>this.props.enterUserName(event)} placeholder="Enter Username"></input>
+          {checkUserName.length>0 ? displayButton: " "}
+            
       </form>
       </div>
   );

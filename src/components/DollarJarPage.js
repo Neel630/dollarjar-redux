@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect, useSelector } from 'react-redux';
 import Header from './Header';
-import PersonList from './PersonList';
+import Person from './Person';
 
 class DollarJarPage extends React.Component{
 
@@ -23,7 +23,7 @@ class DollarJarPage extends React.Component{
             
                 <Header/>
                { 
-                   this.props.personList.map((user)=> <PersonList
+                   this.props.personList.map((user)=> <Person
                            name={user.username}
                            value={user.value}
                            addHandler={()=>this.props.addPenalty(user.id)}

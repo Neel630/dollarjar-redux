@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect, useSelector } from 'react-redux';
-import border from './PersonList.css'
+import './Person.css'
 
-const PersonList =(props)=>{
+const Person =(props)=>{
 
     
         return(
@@ -18,4 +18,4 @@ const PersonList =(props)=>{
 
 }
 
-export default PersonList;
+export default Person;
