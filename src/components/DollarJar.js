@@ -2,13 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
 import Person from './Person';
-import {incrementCharge,decrementCharge} from '../actions/index';
+import {incrementPenalty,decrementPenalty} from '../actions/index';
 
 class DollarJar extends React.Component{
 
     constructor(props){
         super(props);
-        if(performance.navigation.type===1){
+    }
+
+    UNSAFE_componentWillMount(){
+        if(this.props.userName==="")
+        {
             this.props.history.push('/');
         }
     }
@@ -18,12 +22,12 @@ class DollarJar extends React.Component{
             <div className="container">
                 <Header/>
                { 
-                   this.props.personList.map((user)=> 
+                   this.props.personList.map((person)=> 
                    <Person
-                        name={user.username}
-                        value={user.value}
-                        addPenaltyHandler={()=>this.props.addPenalty(user.id)}
-                        subPenaltyHandler={()=>this.props.subPenalty(user.id)}
+                        name={person.username}
+                        value={person.value}
+                        addPenaltyHandler={()=>this.props.addPenalty(person.id)}
+                        subPenaltyHandler={()=>this.props.subPenalty(person.id)}
                     />
                    )
                 }    
@@ -35,6 +39,7 @@ class DollarJar extends React.Component{
 const mapStateToProps =(state)=>{
     
     return{
+        userName:state.userNameReducer.userName,
         personList:state.dollarJarReducer.person
     }
 }
@@ -43,9 +48,9 @@ const mapDispatchToProps =(dispatch)=>{
     
     return {
         
-        addPenalty:(id)=>dispatch(incrementCharge(id)),
+        addPenalty:(id)=>dispatch(incrementPenalty(id)),
 
-        subPenalty:(id)=>dispatch(decrementCharge(id))
+        subPenalty:(id)=>dispatch(decrementPenalty(id))
     }
 }
 

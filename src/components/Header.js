@@ -1,21 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { newNameAdder ,modifyPenalty, addNewPerson } from '../actions/index';
+import { modifyPenalty, addNewPerson, setNewName } from '../actions/index';
 
-function Header (props){
-    return(
-        <div>
-            <form>
-                <p>Hii {props.loginName}</p>
-                <p>Penalty : {props.penalty}</p>
-                <input type="number" value={props.penalty} onChange = {(event)=>props.changePenalty(event)}></input>
-                <br></br>
-                <p>Total : {props.total}</p>
-                <input placeholder="Enter Name" value={props.newName} onChange={(event)=>props.newNameToAdd(event)}></input>
-                <button onClick={(event)=>props.addPerson(event)}>Add Person</button>
-            </form>
-        </div>
-    )
+class Header extends React.Component{
+
+
+    something(event) {
+        event.preventDefault();
+        this.props.addPerson();
+    }
+
+    render(){
+
+        return(
+            <div>
+                <form>
+                    <p>Hii {this.props.loginName}</p>
+                    <p>Penalty : {this.props.penalty}</p>
+                    <input type="number" value={this.props.penalty} onChange = {(event)=>this.props.changePenalty(event)}></input>
+                    <br></br>
+                    <p>Total : {this.props.total}</p>
+                    <input placeholder="Enter Name" value={this.props.newName} onChange={(event)=>this.props.newNameToAdd(event)}></input>
+                    <button onClick={(event)=>this.something(event)}>Add Person</button>
+                </form>
+            </div>
+        )
+    }
 }
 
 
@@ -31,11 +41,11 @@ const mapStateToProps =(state) =>{
 
 const mapDispatchToProps =(dispatch)=>{
     return{
-        changePenalty:(event) => dispatch(modifyPenalty(event)),
+        changePenalty:(event) => dispatch(modifyPenalty(event.target.value)),
 
-        newNameToAdd:(event) => dispatch(newNameAdder(event)),
+        newNameToAdd:(event) => dispatch(setNewName(event.target.value)),
 
-        addPerson:(event)=>dispatch(addNewPerson(event))
+        addPerson:()=>dispatch(addNewPerson())
     }
 }
 

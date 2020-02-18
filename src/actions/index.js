@@ -1,41 +1,42 @@
-export function modifyPenalty(event) {
+import * as actionTypes from './actionTypes';
+
+export function modifyPenalty(amount) {
     return {
-        type: 'PENALTY_CHANGE',
-        payload: event.target.value
+        type: actionTypes.MODIFY_PENALTY,
+        payload: amount
     }
 }
 
-export function newNameAdder(event) {
+export function setNewName(newName) {
     return {
-        type: 'DETECT_NEW_NAME',
-        payload: event.target.value
+        type: actionTypes.SET_NEW_NAME,
+        payload: newName
     }
 }
 
-export function addNewPerson (event) {
+export function addNewPerson () {
     return {
-        type: 'ADD_PERSON',
-        payload: event
+        type: actionTypes.ADD_NEW_PERSON,
     }
 }
 
-export function incrementCharge (id) {
+export function incrementPenalty (id) {
     return {
-        type:'ADD_PENALTY',
+        type:actionTypes.INCREMENT_PENALTY,
         payload:id
     }
 }
 
-export function decrementCharge (id) {
+export function decrementPenalty(id) {
     return {
-        type:'SUB_PENALTY',
+        type:actionTypes.DECREMENT_PENALTY,
         payload:id
     }
 }
 
-export function detectUserName(event){
+export function setLoginName(event){
     return {
-        type:'DETECT_USERNAME',
+        type:actionTypes.SET_LOGIN_NAME,
         payload:event.target.value
     }
 }

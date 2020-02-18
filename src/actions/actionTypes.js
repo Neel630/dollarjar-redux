@@ -1,0 +1,13 @@
+export const MODIFY_PENALTY = 'PENALTY_CHANGE';
+
+export const SET_NEW_NAME = 'SET_NEW_NAME';
+
+export const ADD_NEW_PERSON = 'ADD_NEW_PERSON';
+
+export const INCREMENT_PENALTY ='INCREMENT_PENALTY';
+
+export const DECREMENT_PENALTY ='DECREMENT_PENALTY';
+
+export const SET_LOGIN_NAME ='SET_LOGIN_NAME';
+
+        

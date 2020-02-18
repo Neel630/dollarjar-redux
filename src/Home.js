@@ -2,7 +2,7 @@ import React from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
-import { detectUserName } from './actions/index';
+import { setLoginName } from './actions/index';
 
 
 function Home (props) {
@@ -29,7 +29,7 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch)=>{
   return{
-    userNameDetected:(event)=> dispatch(detectUserName(event))
+    userNameDetected:(event)=> dispatch(setLoginName(event))
   }
 }
 
