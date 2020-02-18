@@ -1,18 +1,18 @@
 let initialState = {
-    tempname: "",
+    newName: "",
     person: [],
     count: 0,
     penalty: 10,
     total: 0
 }
 
-const personReducer = (state = initialState, action) => {
+const dollarJarReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case 'DETECT_NEW_NAME':
             return {
                 ...state,
-                tempname: action.payload
+                newName: action.payload
             };
 
         case 'ADD_PERSON':
@@ -20,7 +20,7 @@ const personReducer = (state = initialState, action) => {
             let stateToModify = {
                 ...state
             };
-            let nameToAdd = stateToModify.tempname.trim();
+            let nameToAdd = stateToModify.newName.trim();
             let arrayToModify = [...stateToModify.person];
             if (nameToAdd != "") {
                 let newPerson = {
@@ -32,7 +32,7 @@ const personReducer = (state = initialState, action) => {
                 arrayToModify.push(newPerson);
                 stateToModify.person = arrayToModify;
                 stateToModify.count += 1;
-                stateToModify.tempname = "";
+                stateToModify.newName = "";
             }
             return {
                 ...stateToModify,
@@ -105,4 +105,4 @@ const personReducer = (state = initialState, action) => {
     }
 }
 
-export default personReducer;
+export default dollarJarReducer;

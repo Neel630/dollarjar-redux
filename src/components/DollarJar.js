@@ -35,7 +35,7 @@ class DollarJar extends React.Component{
 const mapStateToProps =(state)=>{
     
     return{
-        personList:state.personReducer.person
+        personList:state.dollarJarReducer.person
     }
 }
 

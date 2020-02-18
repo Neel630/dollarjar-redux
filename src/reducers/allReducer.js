@@ -1,10 +1,10 @@
-import personReducer from './personReducer';
+import dollarJarReducer from './dollarJarReducer';
 import userNameReducer from './userNameReducer';
 import {combineReducers} from 'redux';
 
 const allReducer = combineReducers(
     {
-        personReducer,
+        dollarJarReducer,
         userNameReducer
     }
 );

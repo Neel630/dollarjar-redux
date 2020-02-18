@@ -6,12 +6,12 @@ function Header (props){
     return(
         <div>
             <form>
-                <p>Hii {props.loginname}</p>
+                <p>Hii {props.loginName}</p>
                 <p>Penalty : {props.penalty}</p>
                 <input type="number" value={props.penalty} onChange = {(event)=>props.changePenalty(event)}></input>
                 <br></br>
                 <p>Total : {props.total}</p>
-                <input placeholder="Enter Name" value={props.tempName} onChange={(event)=>props.newNameToAdd(event)}></input>
+                <input placeholder="Enter Name" value={props.newName} onChange={(event)=>props.newNameToAdd(event)}></input>
                 <button onClick={(event)=>props.addPerson(event)}>Add Person</button>
             </form>
         </div>
@@ -22,10 +22,10 @@ function Header (props){
 const mapStateToProps =(state) =>{
     
     return{
-        loginname: state.userNameReducer.userName,
-        penalty: state.personReducer.penalty,
-        tempName:state.personReducer.tempname,
-        total:state.personReducer.total
+        loginName: state.userNameReducer.userName,
+        penalty: state.dollarJarReducer.penalty,
+        newName:state.dollarJarReducer.newname,
+        total:state.dollarJarReducer.total
     }
 }
 

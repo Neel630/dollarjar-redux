@@ -14,7 +14,7 @@ function Home (props) {
       <div className="container">
         <form>
             <input onChange={(event)=>props.userNameDetected(event)} placeholder="Enter Username"></input>
-            {checkUserName.length>0 ? displayButton: " "}
+            {checkUserName.length>0 ? displayButton: ""}
         </form>
       </div>
   );
