@@ -6,10 +6,6 @@ import {incrementPenalty,decrementPenalty} from '../actions/index';
 
 class DollarJar extends React.Component{
 
-    constructor(props){
-        super(props);
-    }
-
     UNSAFE_componentWillMount(){
         if(this.props.userName==="")
         {
